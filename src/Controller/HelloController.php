@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\service\StringUtils;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -9,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/hello")
  */
-class HelloController {
+class HelloController extends AbstractController {
 
 
     /**
@@ -17,8 +18,10 @@ class HelloController {
      */
     public function world(StringUtils $stringUtils, $name)
     {
-       $name= $stringUtils->capitalize($name);
+        $name= $stringUtils->capitalize($name);
 
-        return new Response("<h2>Hello-$name</h2>") ;
+
+        return $this->render('hello.html.twig', ['name'=> $name]);
+
     }
 }
