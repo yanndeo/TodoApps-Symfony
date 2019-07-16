@@ -4,14 +4,19 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+/**
+ * @Route("/hello")
+ */
 class HelloController {
 
 
     /**
-     * @Route("/")
+     * @Route("/{name}" )
      */
-    public function world(){
+    public function world($name){
 
-        return new Response("<h2>Hello-word</h2>") ;
+
+        return new Response("<h2>Hello-$name</h2>") ;
     }
 }
