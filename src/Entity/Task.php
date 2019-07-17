@@ -42,6 +42,14 @@ class Task
     private $reminder;
 
 
+
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $reminderDone =false;
+
+
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Listing", inversedBy="tasks")
      * @ORM\JoinColumn()
@@ -114,6 +122,24 @@ class Task
     {
         $this->reminder = $reminder;
     }
+
+    /**
+     * @return mixed
+     */
+    public function isReminderDone()
+    {
+        return $this->reminderDone;
+    }
+
+    /**
+     * @param mixed $reminderDone
+     */
+    public function setReminderDone($reminderDone): void
+    {
+        $this->reminderDone = $reminderDone;
+    }
+
+
 
 
 

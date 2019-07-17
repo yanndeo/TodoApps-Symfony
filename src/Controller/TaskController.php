@@ -53,6 +53,9 @@ class TaskController extends AbstractController
 
             $entityManager->flush();
 
+            $this->addFlash('success' , 'La tâche indiquée <<' . $task->getName() .' >> a été ajoutée dans la liste ' . $listing->getName() );
+
+
             return $this->redirectToRoute('listing_show', ['listingID'=> $listingID]);
         }
 
