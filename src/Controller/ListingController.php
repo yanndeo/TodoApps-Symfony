@@ -40,6 +40,14 @@ class ListingController extends AbstractController
 
     }
 
+
+
+
+
+
+
+
+
     /**
      * @Route("/new", methods="POST" , name="create")
      */
@@ -74,6 +82,39 @@ class ListingController extends AbstractController
         $this->addFlash('success', 'la tâche ' . $name . ' a été ajoutée.');
 
         return $this->redirectToRoute('task_show');
+
+    }
+
+
+
+
+
+
+
+
+    /**
+     * @Route("/{taskID}/delete", name="delete"  , requirements={"taskID" ="\d+"})
+     */
+    public function delete(Listing $taskID)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $task= $entityManager->getRepository(Listing::class)->find($taskID);
+
+
+        if(!$task){
+            $this->addFlash('danger', 'Tâche non trouvée .');
+
+        }else{
+            $entityManager->remove(($task));
+            $entityManager->flush();
+            $this->addFlash('danger', 'La tâche <<'. $task->getName() . ' >> a été supprimée');
+
+        }
+
+        return $this->redirectToRoute('task_show');
+
+
+
 
     }
 
