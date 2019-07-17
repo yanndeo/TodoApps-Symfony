@@ -4,8 +4,7 @@
     <list default="true" id="cdd2115b-6390-436f-bc4d-4b00c45662d3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ListingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ListingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Listing.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Listing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20190717001733.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/listing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/listing.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,16 +30,16 @@
         <counts>
           <entry key="env" value="37" />
           <entry key="gitignore" value="6" />
-          <entry key="php" value="1089" />
-          <entry key="twig" value="612" />
+          <entry key="php" value="1269" />
+          <entry key="twig" value="790" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="37" />
-          <entry key="PHP" value="1089" />
+          <entry key="PHP" value="1269" />
           <entry key="PLAIN_TEXT" value="6" />
-          <entry key="Twig" value="612" />
+          <entry key="Twig" value="790" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -77,11 +76,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/ListingController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="59" column="75" selection-start-line="59" selection-start-column="75" selection-end-line="59" selection-end-column="75" />
+            <state relative-caret-position="535">
+              <caret line="38" column="81" selection-start-line="38" selection-start-column="70" selection-end-line="38" selection-end-column="81" />
               <folding>
                 <element signature="e#34#57#0#PHP" expanded="true" />
               </folding>
@@ -98,11 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/listing.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="472">
+              <caret line="44" column="17" lean-forward="true" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -135,10 +134,10 @@
         <option value="$PROJECT_DIR$/templates/hello.html.twig" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/templates/listing.html.twig" />
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/Listing.php" />
         <option value="$PROJECT_DIR$/src/Controller/ListingController.php" />
+        <option value="$PROJECT_DIR$/templates/listing.html.twig" />
       </list>
     </option>
   </component>
@@ -214,7 +213,7 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="842" />
+    <option name="x" value="673" />
     <option name="y" value="23" />
     <option name="width" value="1019" />
     <option name="height" value="743" />
@@ -296,18 +295,18 @@
       <option name="presentableId" value="Default" />
       <updated>1563315309829</updated>
       <workItem from="1563315312540" duration="8418000" />
-      <workItem from="1563358587428" duration="1324000" />
+      <workItem from="1563358587428" duration="2643000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9742000" />
+    <option name="totallyTimeSpent" value="11061000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="842" y="23" width="1019" height="743" extended-state="0" />
+    <frame x="673" y="23" width="1019" height="743" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.42235124" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.42169908" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -372,13 +371,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/listing.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/hello.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -427,11 +419,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/ListingController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="59" column="75" selection-start-line="59" selection-start-column="75" selection-end-line="59" selection-end-column="75" />
+        <state relative-caret-position="535">
+          <caret line="38" column="81" selection-start-line="38" selection-start-column="70" selection-end-line="38" selection-end-column="81" />
           <folding>
             <element signature="e#34#57#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/listing.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="44" column="17" lean-forward="true" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
         </state>
       </provider>
     </entry>

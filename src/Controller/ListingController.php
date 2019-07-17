@@ -21,13 +21,22 @@ class ListingController extends AbstractController
 
 
     /**
-     * @Route("/" , name="allshow")
+     * @Route("/{taskID}" , name="show" , requirements={"taskID"="\d+" })
      */
-    public function show(EntityManagerInterface $entityManager)
+    public function show(EntityManagerInterface $entityManager , $taskID = null)
     {
         $listings = $entityManager->getRepository(Listing::class)->findAll();
 
-       return $this->render('listing.html.twig', compact('listings'));
+        if(!empty($taskID)){
+           $currentTask=  $entityManager->getRepository(Listing::class)->find($taskID);
+        }
+        if(empty($currentTask)){
+            $currentTask = current($listings);
+        }
+
+
+
+       return $this->render('listing.html.twig', compact('listings', 'currentTask'));
 
     }
 
@@ -44,7 +53,7 @@ class ListingController extends AbstractController
 
             $this->addFlash('warning', 'Le nom de la tâche doit être fournie.');
 
-            return $this->redirectToRoute('task_allshow');
+            return $this->redirectToRoute('task_show');
         }
 
         $listing = new Listing();
@@ -62,11 +71,17 @@ class ListingController extends AbstractController
             }
 
 
-        $this->addFlash('success', 'la tâche' . $name . ' a été ajoutée.');
+        $this->addFlash('success', 'la tâche ' . $name . ' a été ajoutée.');
 
-        return $this->redirectToRoute('task_allshow');
+        return $this->redirectToRoute('task_show');
 
     }
+
+
+
+
+
+
 
 
 
