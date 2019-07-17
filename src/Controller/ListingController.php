@@ -20,7 +20,7 @@ class ListingController extends AbstractController
 
 
     /**
-     * @Route("/")
+     * @Route("/" , name="allshow")
      */
     public function show(EntityManagerInterface $entityManager)
     {
@@ -33,11 +33,17 @@ class ListingController extends AbstractController
     /**
      * @Route("/new", methods="POST" , name="create")
      */
-    public function create(EntityManagerInterface $entityManager, Request $request):Response
+    public function create(Request $request)
     {
+        $entityManager = $this->getDoctrine()->getManager();
 
         $name = $request->get('name');
-        //var_dump($name); die();
+
+        if(empty($name)){
+
+            $this->addFlash('warning', 'Le nom de la tâche doit être fournie.');
+            return $this->redirectToRoute('task_allshow');
+        }
 
         $listing = new Listing();
         $listing->setName($name);
@@ -45,7 +51,10 @@ class ListingController extends AbstractController
         $entityManager->persist($listing);
         $entityManager->flush();
 
-        return new Response('ok');
+
+        $this->addFlash('success', 'la tâche' . $name . ' a été ajoutée.');
+
+        return $this->redirectToRoute('task_allshow');
 
     }
 
