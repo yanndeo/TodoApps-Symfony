@@ -6,7 +6,7 @@
 
          <div class="col-md-4 offset-md-1 left-column mb-1">
              <div class="list-group">
-                 <a href="#" class="list-group-item list-group-item-action active">
+                 <a href="#" class="list-group-item list-group-item-action" style="background-color: #5060dc; color: white">
                      Semaine 2
                  </a>
 
@@ -25,7 +25,7 @@
                          <div class="form-group mx-sm-3 mb-2 ">
                              <input type="text" class="form-control " name="name" placeholder="Ajouter une tâche à faire">
                          </div>
-                         <button type="submit" class="btn btn-primary mb-2"><i class="fa fa-plus"> </i> </button>
+                         <button type="submit" class="btn btn-primary mb-2" style="background-color: #5060dc;color: whitesmoke"><i class="fa fa-plus" > </i> </button>
                      </form>
                  </a>
 
@@ -38,21 +38,21 @@
 
              {% if currentListing %}
                  <nav class="nav nav-pills flex-column flex-sm-row">
-                     <a class="flex-sm-fill text-sm-center nav-link active" href="#">{{ currentListing.name }}
+                     <a class="flex-sm-fill text-sm-center nav-link " style="background-color: #5060dc;color: whitesmoke" href="#">{{ currentListing.name }}
 
 
                      </a>
 
                          <form class="form-inline">
                              <a href="{{  path('task_create', {'listingID': currentListing.id } ) }}">
-                                 <button class="btn btn-outline-primary" type="button">
+                                 <button class="btn btn-primary" type="button">
                                      <i class="fa fa-plus"></i>
                                  </button>
                              </a>
 
                               <a href="{{  path('listing_delete', {'listingID': currentListing.id } ) }}">
                                   <button class="btn btn-outline-danger" type="button">
-                                      <i class="fa fa-trash"></i>
+                                      <i class="fa fa-trash "></i>
                                   </button>
                               </a>
                          </form>
@@ -82,7 +82,7 @@
              {% else %}
                 <h5> Aucune List existante </h5>
                  <p>
-                     Vous pouvez creer une nouvelle list een cliquant sur le bouton <i class="fa fa-plus"></i>
+                     Vous pouvez creer une nouvelle list een cliquant sur le bouton <i class="fa fa-plus " style="background-color: #5060dc;color: whitesmoke"></i>
                  </p>
 
 
