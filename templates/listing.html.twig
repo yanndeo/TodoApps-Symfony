@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+        {% block title %} Liste des tâches. {% endblock %}
+
+        {% block body %}
+
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active">
+                    Semaine 2
+                </a>
+                {% for listing in listings  %}
+
+                    <a href="#" class="list-group-item list-group-item-action">{{ listing.name }} </a>
+
+                {% endfor %}
+
+                <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
+            </div>
+
+        {% endblock %}
+
