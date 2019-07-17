@@ -12,7 +12,7 @@
 
                  {% for listing in listings  %}
 
-                     <a href="{{ path('task_show', {'taskID':listing.id }) }}" class="list-group-item list-group-item-action">
+                     <a href="{{ path('listing_show', {'listingID':listing.id }) }}" class="list-group-item list-group-item-action">
                          {{ listing.name }}
                      </a>
 
@@ -20,7 +20,7 @@
 
 
                  <a href="#" class="list-group-item list-group-item-action " style="background-color: whitesmoke" >
-                     <form class="form-inline" action="{{ path('task_create') }}" method="post">
+                     <form class="form-inline" action="{{ path('listing_create') }}" method="post">
 
                          <div class="form-group mx-sm-3 mb-2 ">
                              <input type="text" class="form-control " name="name" placeholder="Ajouter une tâche à faire">
@@ -36,15 +36,15 @@
 
          <div class="col-md-5 list mb-1">
 
-             {% if currentTask %}
+             {% if currentListing %}
                  <nav class="nav nav-pills flex-column flex-sm-row">
-                     <a class="flex-sm-fill text-sm-center nav-link active" href="#">{{ currentTask.name }}
+                     <a class="flex-sm-fill text-sm-center nav-link active" href="#">{{ currentListing.name }}
 
 
                      </a>
 
                          <form class="form-inline">
-                              <a href="{{  path('task_delete', {'taskID': currentTask.id } ) }}">
+                              <a href="{{  path('listing_delete', {'listingID': currentListing.id } ) }}">
                                   <button class="btn btn-outline-danger" type="button">
                                       <i class="fa fa-trash"></i>
                                   </button>

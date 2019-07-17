@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 /**
- * @Route("/" , name="task_")
+ * @Route("/" , name="listing_")
  */
 class ListingController extends AbstractController
 {
@@ -21,22 +21,22 @@ class ListingController extends AbstractController
 
 
     /**
-     * @Route("/{taskID}" , name="show" , requirements={"taskID"="\d+" })
+     * @Route("/{listingID}" , name="show" , requirements={"listingID"="\d+" })
      */
-    public function show(EntityManagerInterface $entityManager , $taskID = null)
+    public function show(EntityManagerInterface $entityManager , $listingID = null)
     {
         $listings = $entityManager->getRepository(Listing::class)->findAll();
 
-        if(!empty($taskID)){
-           $currentTask=  $entityManager->getRepository(Listing::class)->find($taskID);
+        if(!empty($listingID)){
+           $currentListing=  $entityManager->getRepository(Listing::class)->find($listingID);
         }
-        if(empty($currentTask)){
-            $currentTask = current($listings);
+        if(empty($currentListing)){
+            $currentListing = current($listings);
         }
 
 
 
-       return $this->render('listing.html.twig', compact('listings', 'currentTask'));
+       return $this->render('listing.html.twig', compact('listings', 'currentListing'));
 
     }
 
@@ -61,7 +61,7 @@ class ListingController extends AbstractController
 
             $this->addFlash('warning', 'Le nom de la tâche doit être fournie.');
 
-            return $this->redirectToRoute('task_show');
+            return $this->redirectToRoute('listing_show');
         }
 
         $listing = new Listing();
@@ -81,7 +81,7 @@ class ListingController extends AbstractController
 
         $this->addFlash('success', 'la tâche ' . $name . ' a été ajoutée.');
 
-        return $this->redirectToRoute('task_show');
+        return $this->redirectToRoute('listing_show');
 
     }
 
@@ -93,25 +93,25 @@ class ListingController extends AbstractController
 
 
     /**
-     * @Route("/{taskID}/delete", name="delete"  , requirements={"taskID" ="\d+"})
+     * @Route("/{listingID}/delete", name="delete"  , requirements={"listingID" ="\d+"})
      */
-    public function delete(Listing $taskID)
+    public function delete(Listing $listingID)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $task= $entityManager->getRepository(Listing::class)->find($taskID);
+        $listing= $entityManager->getRepository(Listing::class)->find($listingID);
 
 
-        if(!$task){
+        if(!$listing){
             $this->addFlash('danger', 'Tâche non trouvée .');
 
         }else{
-            $entityManager->remove(($task));
+            $entityManager->remove(($listing));
             $entityManager->flush();
-            $this->addFlash('danger', 'La tâche <<'. $task->getName() . ' >> a été supprimée');
+            $this->addFlash('danger', 'La tâche <<'. $listing->getName() . ' >> a été supprimée');
 
         }
 
-        return $this->redirectToRoute('task_show');
+        return $this->redirectToRoute('listing_show');
 
 
 
