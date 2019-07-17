@@ -24,7 +24,7 @@ class Listing
 
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Task" , mappedBy="listing")
+     * @ORM\OneToMany(targetEntity="App\Entity\Task" , mappedBy="listing" , cascade= {"remove"} )
      *
      */
     private $tasks;

@@ -67,6 +67,11 @@
                              {% for task in currentListing.tasks %}
                                  <tr>
                                      <td scope="row"> <a href="#"> {{ task.name }} </a> </td>
+
+                                     <td scope="row"> <a href="{{ path('task_edit', {'listingID': currentListing.id , 'taskID':task.id }) }}"> <i class="fa fa-edit"></i> </a> </td>
+
+                                     <td scope="row"> <a href="{{ path('task_delete', {'listingID': currentListing.id , 'taskID':task.id }) }}"> <i class="fa fa-minus"></i> </a> </td>
+
                                  </tr>
                              {% endfor %}
 

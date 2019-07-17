@@ -44,7 +44,12 @@ class TaskType extends AbstractType
             ])
 
 
-            ->add('save', SubmitType::class);
+            ->add('save', SubmitType::class, [
+                'attr'=>[
+                    'class'=> 'btn btn-primary btn-lg btn-block',
+                    'style'=> 'background-color:#5060dc'
+                ]
+            ]);
     }
 
 }
