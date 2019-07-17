@@ -30,9 +30,9 @@ class Reminder
 
     public function remind()
     {
-        $tasks = $this->entityManager->getRepository(Task::class)->findAll() ;
+        $tasks = $this->entityManager->getRepository(Task::class)->findAllToRemind(new \DateTime())  ;
 
-        
+
 
         return  7;
 

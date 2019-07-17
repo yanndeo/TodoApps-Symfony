@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdd2115b-6390-436f-bc4d-4b00c45662d3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/task.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/task.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/TaskRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TaskRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/Reminder.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/Reminder.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +29,7 @@
         <counts>
           <entry key="env" value="37" />
           <entry key="gitignore" value="6" />
-          <entry key="php" value="4989" />
+          <entry key="php" value="5156" />
           <entry key="twig" value="1821" />
           <entry key="yaml" value="60" />
         </counts>
@@ -39,7 +37,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="37" />
-          <entry key="PHP" value="4989" />
+          <entry key="PHP" value="5156" />
           <entry key="PLAIN_TEXT" value="6" />
           <entry key="Twig" value="1821" />
           <entry key="YAML" value="60" />
@@ -50,7 +48,7 @@
           <entry key="env" value="3" />
           <entry key="gitignore" value="1" />
           <entry key="json" value="4" />
-          <entry key="php" value="17" />
+          <entry key="php" value="18" />
           <entry key="twig" value="9" />
           <entry key="yaml" value="2" />
         </counts>
@@ -59,7 +57,7 @@
         <counts>
           <entry key=".env file" value="3" />
           <entry key="JSON" value="4" />
-          <entry key="PHP" value="17" />
+          <entry key="PHP" value="18" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Twig" value="9" />
           <entry key="YAML" value="2" />
@@ -113,10 +111,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Repository/TaskRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="26" column="81" selection-start-line="26" selection-start-column="81" selection-end-line="26" selection-end-column="81" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/Task.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="45" column="12" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
+            <state relative-caret-position="120">
+              <caret line="128" column="22" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
               <folding>
                 <element signature="e#30#62#0#PHP" expanded="true" />
               </folding>
@@ -160,8 +167,9 @@
         <option value="$PROJECT_DIR$/templates/task.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/TaskController.php" />
         <option value="$PROJECT_DIR$/src/Command/ReminderCommand.php" />
-        <option value="$PROJECT_DIR$/src/service/Reminder.php" />
         <option value="$PROJECT_DIR$/src/Entity/Task.php" />
+        <option value="$PROJECT_DIR$/src/service/Reminder.php" />
+        <option value="$PROJECT_DIR$/src/Repository/TaskRepository.php" />
       </list>
     </option>
   </component>
@@ -246,7 +254,7 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="776" />
+    <option name="x" value="483" />
     <option name="y" value="23" />
     <option name="width" value="1267" />
     <option name="height" value="743" />
@@ -280,7 +288,7 @@
               <item name="Afaire" type="b2602c69:ProjectViewProjectNode" />
               <item name="Afaire" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
+              <item name="Repository" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Afaire" type="b2602c69:ProjectViewProjectNode" />
@@ -334,15 +342,15 @@
       <option name="presentableId" value="Default" />
       <updated>1563315309829</updated>
       <workItem from="1563315312540" duration="8418000" />
-      <workItem from="1563358587428" duration="18743000" />
+      <workItem from="1563358587428" duration="19951000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27161000" />
+    <option name="totallyTimeSpent" value="28369000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="776" y="23" width="1267" height="743" extended-state="0" />
+    <frame x="647" y="23" width="1267" height="743" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.42122447" />
@@ -515,6 +523,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Task.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="128" column="22" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
+          <folding>
+            <element signature="e#30#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/service/Reminder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -525,13 +543,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Task.php">
+    <entry file="file://$PROJECT_DIR$/src/Repository/TaskRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="45" column="12" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="360">
+          <caret line="26" column="81" selection-start-line="26" selection-start-column="81" selection-end-line="26" selection-end-column="81" />
         </state>
       </provider>
     </entry>
