@@ -8,14 +8,29 @@
                 <a href="#" class="list-group-item list-group-item-action active">
                     Semaine 2
                 </a>
+
                 {% for listing in listings  %}
 
                     <a href="#" class="list-group-item list-group-item-action">{{ listing.name }} </a>
 
                 {% endfor %}
 
-                <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
+
+               <a href="#" class="list-group-item list-group-item-action " style="background-color: whitesmoke" >
+                   <form class="form-inline" action="{{ path('task_create') }}" method="post">
+
+                       <div class="form-group mx-sm-3 mb-2 ">
+                           <input type="text" class="form-control " name="name" placeholder="Ajouter une tâche à faire">
+                       </div>
+                       <button type="submit" class="btn btn-primary mb-2"><i class="fa fa-plus"> </i> </button>
+                   </form>
+               </a>
+
+
+
             </div>
+
+
 
         {% endblock %}
 
