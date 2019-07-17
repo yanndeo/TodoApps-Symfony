@@ -50,8 +50,29 @@
                                   </button>
                               </a>
                          </form>
-
                  </nav>
+
+                 <div class="row px-4 mt-3">
+
+                     {% if currentListing.tasks | length %}
+                         <table class="table table-striped">
+
+                             <tbody>
+                             {% for task in currentListing.tasks %}
+                                 <tr>
+                                     <td scope="row"> <a href="#"> {{ task.name }} </a> </td>
+                                 </tr>
+                             {% endfor %}
+
+                             </tbody>
+                         </table>
+                     {% else %}
+
+                         <h5> Aucune tâches existante .</h5>
+                         <p> Vous pouvez creer une nouvelle tâche en cliquant <i class="fa fa-plus"> </i></p>
+
+                     {% endif %}
+                 </div>
              {% else %}
                 <h5> Aucune List existante </h5>
                  <p>
