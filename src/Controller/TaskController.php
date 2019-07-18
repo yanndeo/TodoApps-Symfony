@@ -25,17 +25,40 @@ class TaskController extends AbstractController
 
 
 
+    private $em;
+
+    private $taskRepository;
+
+    private $listingRepository;
+
+
+    /**
+     * TaskController constructor.
+     * @param EntityManagerInterface $entityManager
+     */
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->em = $entityManager;
+
+        $this->taskRepository = $this->em->getRepository(Task::class);
+
+        $this->listingRepository = $this->em->getRepository(Listing::class);
+
+
+    }
+
+
+
+
     /**
      * @Route("/new", name="create")
      */
-    public function create(EntityManagerInterface $entityManager,  Request $request , $listingID)
+    public function create(Request $request , $listingID)
     {
-        /**
-         * Récupérant le listing en cours afin d'y associer la nouvelle task à ce listing.
-         * On repond à la question de savoir  : Dans quelle listing la tâche sera telle creer.
-         */
+        //Récupérant le listing en cours afin d'y associer la nouvelle task à ce listing.
+        //On repond à la question de savoir  : Dans quelle listing la tâche sera telle creer.
 
-        $listing = $entityManager->getRepository(Listing::class)->find($listingID);
+        $listing = $this->listingRepository->find($listingID);
 
 
         $task = new Task();
@@ -49,12 +72,11 @@ class TaskController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $entityManager->persist($task);
+            $this->em ->persist($task);
 
-            $entityManager->flush();
+            $this->em->flush();
 
             $this->addFlash('success' , 'La tâche indiquée <<' . $task->getName() .' >> a été ajoutée dans la liste ' . $listing->getName() );
-
 
             return $this->redirectToRoute('listing_show', ['listingID'=> $listingID]);
         }
@@ -74,39 +96,34 @@ class TaskController extends AbstractController
     /**
      * @Route("/{taskID}/edit", name="edit", requirements={"taskID"= "\d+" })
      */
-    public function edit(EntityManagerInterface $entityManager,  Request $request , $listingID, $taskID )
+    public function edit(Request $request , $listingID, $taskID )
     {
 
-        $listing = $entityManager->getRepository(Listing::class)->find($listingID); //Asssurns nous juste que l'ID de la liste est bien existe vraiment
-
+        $listing = $this->listingRepository->find($listingID);   //Asssurons nous juste que l'ID de la liste est bien existe vraiment
 
         if(empty($listing)){
 
             $this->addFlash('danger' , 'Le listing associer à cette tâche n\'existe pas . ');
-
         }
 
-        $task = $entityManager->getRepository(Task::class)->find($taskID);
+
+        $task = $this->taskRepository->find($taskID);
 
         if(empty($task)){
 
             $this->addFlash('warning' , 'La tâche indiquée n\'existe pas');
 
             return $this->redirectToRoute('listing_show', ['listingID'=> $listingID]);
-
         }
-
 
 
         $form= $this->createForm(TaskType::class, $task );
 
         $form->handleRequest($request);
 
+        if($form->isSubmitted() && $form->isValid()){
 
-        if($form->isSubmitted() && $form->isValid())
-        {
-
-            $entityManager->flush();
+            $this->em->flush();
 
             $this->addFlash('succcess' , 'La tâche << '. $task->getName() . '>> a été modifée');
 
@@ -114,32 +131,37 @@ class TaskController extends AbstractController
         }
 
 
-
-        return $this->render('task.html.twig', ['form'=> $form->createView()] );
+        return $this->render('task.html.twig', ['form' => $form->createView()] );
 
     }
+
+
+
+
+
+
 
 
     /**
      * @Route("/{taskID}/delete", name="delete", requirements= {"taskID"="\d+"})
      */
-    public function delete(EntityManagerInterface $entityManager, $listingID, $taskID)
+    public function delete($listingID, $taskID)
     {
 
-        $task = $entityManager->getRepository(Task::class)->find($taskID);
+        $task = $this->taskRepository->find($taskID);
 
         if(empty($task)){
 
             $this->addFlash('danger', 'La tâche indiquée n\' existe pas!!!');
 
-
         }else{
-            $entityManager->remove($task);
-            $entityManager->flush();
+
+            $this->em->remove($task);
+
+            $this->em->flush();
 
             $this->addFlash('success', 'La tâche <<' . $task->getName() . '>>  a bien été supprimée');
         }
-
 
 
         return $this->redirectToRoute('listing_show', ['listingID'=> $listingID]);
@@ -148,5 +170,5 @@ class TaskController extends AbstractController
 
 
 
-    //PS: $listingID nous es passé pas la route principale definie dans la class.
+    //PS: $listingID nous est passé pas la route principale definie dans la class.
 }

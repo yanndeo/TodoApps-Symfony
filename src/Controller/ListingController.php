@@ -18,22 +18,34 @@ use Symfony\Component\Routing\Annotation\Route;
 class ListingController extends AbstractController
 {
 
+    private $em;
+
+    private $listingRepository;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->em = $entityManager;
+
+        $this->listingRepository = $this->em->getRepository(Listing::class);
+    }
+
+
 
 
     /**
      * @Route("/{listingID}" , name="show" , requirements={"listingID"="\d+" })
      */
-    public function show(EntityManagerInterface $entityManager , $listingID = null)
+    public function show( $listingID = null)
     {
-        $listings = $entityManager->getRepository(Listing::class)->findAll();
+        $listings = $this->listingRepository->findAll();
 
         if(!empty($listingID)){
-           $currentListing=  $entityManager->getRepository(Listing::class)->find($listingID);
+            $currentListing = $this->listingRepository->find($listingID);
         }
+
         if(empty($currentListing)){
             $currentListing = current($listings);
         }
-
 
 
        return $this->render('listing.html.twig', compact('listings', 'currentListing'));
@@ -53,33 +65,35 @@ class ListingController extends AbstractController
      */
     public function create(Request $request)
     {
-        $entityManager = $this->getDoctrine()->getManager();
 
-        $name = $request->get('name');
+        $name = $request->get('name');  //Reccuperont l'information dans la request
 
         if(empty($name)){
 
             $this->addFlash('warning', 'Le nom de la tâche doit être fournie.');
 
-            return $this->redirectToRoute('listing_show');
-        }
+        }else{
 
-        $listing = new Listing();
-        $listing->setName($name);
+            $listing = new Listing();
+
+            $listing->setName($name);
+
+            //Gestion d'erreur sql
 
             try{
 
-                $entityManager->persist($listing);
-                $entityManager->flush();
+                $this->em->persist($listing);
+
+                $this->em->flush();
+
+                $this->addFlash('success', 'la tâche ' . $name . ' a été ajoutée.');
 
             }catch (UniqueConstraintViolationException $e){
 
                 $this->addFlash('warning', 'Attention la tâche existe déjà!, impossible de l\'enregistrer à nouveau.');
-
             }
 
-
-        $this->addFlash('success', 'la tâche ' . $name . ' a été ajoutée.');
+        }
 
         return $this->redirectToRoute('listing_show');
 
@@ -97,16 +111,19 @@ class ListingController extends AbstractController
      */
     public function delete(Listing $listingID)
     {
-        $entityManager = $this->getDoctrine()->getManager();
-        $listing= $entityManager->getRepository(Listing::class)->find($listingID);
 
+        $listing = $this->listingRepository->find($listingID);
 
         if(!$listing){
+
             $this->addFlash('danger', 'Tâche non trouvée .');
 
         }else{
-            $entityManager->remove(($listing));
-            $entityManager->flush();
+
+            $this->em->remove(($listing));
+
+            $this->em->flush();
+
             $this->addFlash('danger', 'La tâche <<'. $listing->getName() . ' >> a été supprimée');
 
         }

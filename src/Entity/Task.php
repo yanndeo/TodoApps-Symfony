@@ -51,6 +51,12 @@ class Task
 
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $done =false;
+
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Listing", inversedBy="tasks")
      * @ORM\JoinColumn()
      */
@@ -138,6 +144,23 @@ class Task
     {
         $this->reminderDone = $reminderDone;
     }
+
+    /**
+     * @return mixed
+     */
+    public function isDone()
+    {
+        return $this->done;
+    }
+
+    /**
+     * @param mixed $done
+     */
+    public function setDone($done): void
+    {
+        $this->done = $done;
+    }
+
 
 
 
