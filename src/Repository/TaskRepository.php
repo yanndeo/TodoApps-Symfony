@@ -20,7 +20,7 @@ class TaskRepository extends ServiceEntityRepository
     }
 
 
-    public function findAllToRemind(\DateTime $datetime)
+    public function findAllToRemindeee(\DateTime $datetime)
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.reminderDone = false')
@@ -32,6 +32,39 @@ class TaskRepository extends ServiceEntityRepository
             ;
     }
 
+
+
+
+
+    public function findAllToRemind(\DateTime $dateTime)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT * FROM task t 
+            WHERE t.reminder_done = :reminder_done  
+            AND t.done = :done 
+            AND SUBTIME(t.due_date ,CONCAT(\'0:\' ,t.reminder, \':0\') ) <= :datetime
+            ORDER BY t.due_date DESC 
+        ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            'reminder_done' => false,
+            'done'=> false,
+            'datetime'=> $dateTime->format(\DateTime::ISO8601)
+        ]);
+
+
+        return $stmt->fetchAll();
+    }
+
+
+
+    //Recupere les tasks dont la date de rappel (t.due_date) a laquelle on soustrait le nombre de minutes preciser(t.reminder)
+    //dont le resulat de cette soustration est inferieur à la date actuelle
+    //A condition qu'elle ne soit pas dejà achevée
+    //et qu'elle n'est pas dejà été rappélé à lutilsater(reminder_done =0)
 
 
 }

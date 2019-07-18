@@ -57,18 +57,21 @@ class TaskType extends AbstractType
 
             if (!empty($task->getId())){
 
-                $form->add('done', CheckboxType::class);
+                $form->add('done', CheckboxType::class ,[
+                    'required'=>false
+                ]);
 
 
                 $form->add('VALIDER' , SubmitType::class,[
                    'attr'=>[
                        'class'=> 'btn btn-warning btn-lg btn-block',
                        'style'=> 'color:whiteSmoke; text-transform: uppercase'
-
                    ]
+
                 ]);
 
             }else{
+
                 $form->add('J\'ENREGISTRER', SubmitType::class, [
                     'attr'=>[
                         'class'=> 'btn btn-primary btn-lg btn-block',

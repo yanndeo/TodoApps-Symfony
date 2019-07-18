@@ -66,13 +66,18 @@
                              <tbody>
                              {% for task in currentListing.tasks %}
                                  <tr>
-                                     <td scope="row"> <a href="#"> {{ task.name }} </a> </td>
+                                     {% if task.done %}
 
-                                     <td scope="row"> <a href="{{ path('task_edit', {'listingID': currentListing.id , 'taskID':task.id }) }}"> <i class="fa fa-edit"></i> </a> </td>
+                                             <td scope="row"> <a href="#"><del>{{ task.name }} </del>  </a> </td>
+                                     {% else %}
 
-                                     <td scope="row"> <a href="{{ path('task_delete', {'listingID': currentListing.id , 'taskID':task.id }) }}"> <i class="fa fa-minus"></i> </a> </td>
+                                             <td scope="row"> <a href="#"> {{ task.name }} </a> </td>
 
-                                     <td scope="row"> <a href="{{ path('task_delete', {'listingID': currentListing.id , 'taskID':task.id }) }}"> <i class="fa fa-minus"></i> </a> </td>
+                                     {% endif %}
+
+                                             <td scope="row"> <a href="{{ path('task_edit', {'listingID': currentListing.id , 'taskID':task.id }) }}"> <i class="fa fa-edit"></i> </a> </td>
+
+                                            <td scope="row"> <a href="{{ path('task_delete', {'listingID': currentListing.id , 'taskID':task.id }) }}"> <i class="fa fa-minus"></i> </a> </td>
 
 
                                  </tr>
@@ -80,12 +85,15 @@
 
                              </tbody>
                          </table>
+
                      {% else %}
 
                          <h5> Aucune tâches existante .</h5>
+
                          <p> Vous pouvez creer une nouvelle tâche en cliquant <i class="fa fa-plus"> </i></p>
 
                      {% endif %}
+
                  </div>
              {% else %}
                 <h5> Aucune List existante </h5>

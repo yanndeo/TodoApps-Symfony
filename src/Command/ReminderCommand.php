@@ -54,6 +54,7 @@ class ReminderCommand extends Command
             '',
         ]);
 
+        //Fail appel au service  qui recupere les tasks dont qu'il faut rappeler via email
         $reminds=  $this->reminder->remind();
 
         $io->success($reminds . ' les rappels ont été envoyé');

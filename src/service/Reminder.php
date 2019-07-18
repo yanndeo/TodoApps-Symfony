@@ -18,7 +18,6 @@ class Reminder
 
     protected $twig;
 
-
     protected $mailer;
 
 
@@ -41,7 +40,7 @@ class Reminder
     {
         $tasks = $this->entityManager->getRepository(Task::class)->findAllToRemind(new \DateTime())  ;
 
-        foreach ($tasks as $task){
+        /*foreach ($tasks as $task){
 
             $message = (new \Swift_Message( "Une tâche doit être réaliser"))
                         ->setFrom('admin@example.com')
@@ -69,7 +68,7 @@ class Reminder
 
         }
 
-        $this->entityManager->flush();
+        $this->entityManager->flush();*/
 
         return sizeof($tasks);
 
